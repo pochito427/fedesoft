@@ -1,0 +1,7 @@
+<%= form_for @image do |f| %>
+    <%= f.label 'Descripción' %> <br>
+    <%= f.text_field :description %>
+    <br>
+   
+    <%= f.submit 'Enviar', :class => 'btn btn-primary' %>
+<% end %>
