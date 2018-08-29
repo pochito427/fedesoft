@@ -45,7 +45,7 @@ class ImagesController < ApplicationController
     private
     
     def images_params
-        params.require(:image).permit(:description)
+        params.require(:image).permit :description, :picture
     end
     
     def set_image

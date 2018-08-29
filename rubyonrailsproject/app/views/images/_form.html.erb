@@ -1,7 +1,13 @@
-<%= form_for @image do |f| %>
-    <%= f.label 'Descripción' %> <br>
-    <%= f.text_field :description %>
-    <br>
-   
-    <%= f.submit 'Enviar', :class => 'btn btn-primary' %>
-<% end %>
+<div class="form-group"> 
+    <%= form_for @image, :html => {:multipart => true} do |f| %>
+        <%= f.label 'Descripción' %> <br>
+        <%= f.text_field :description, class: 'form-control' %>
+        <br>
+        <%= f.label 'Cargar Imagen ' %> <br>
+        <%= f.file_field :picture, class: 'form-control-file' %>
+        <br>
+        <%= f.submit 'Enviar', :class => 'btn btn-primary' %>
+    <% end %>
+</div>
+
+
