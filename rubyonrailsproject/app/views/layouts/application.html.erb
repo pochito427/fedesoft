@@ -9,7 +9,32 @@
   </head>
 
   <body>
+    <ul class="nav justify-content-end ig-header-menu">
+          <li class="nav-item ig-item-menu">
+          <%- if user_signed_in? %> <%# validamos si hay usuario registrado%>
+              <li class="nav-item ig-item-menu">
+                  <%= link_to 'Salir', destroy_user_session_path, method: :delete %>
+              </li>
+          <% else %> <%# si no lo esta mostramos los botones de inicio y registro%>
+              <li class="nav-item ig-item-menu">
+                    <%= link_to 'Iniciar Sesión', new_user_session_path %>
+              </li>
+              <li class="nav-item ig-item-menu">
+                    <%= link_to 'Registrar', new_user_registration_path %>
+              </li>
+          <% end %>
+    </ul>
     <div class="container">
+      <div class="ig-alert">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %> alert-dismissable" role="alert">
+          <button type="button" data-dismiss="alert" class="close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <%= value %>
+        </div>
+      <% end %>
+      </div>
       <%= yield %>
     </div>
   </body>

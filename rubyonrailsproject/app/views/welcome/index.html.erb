@@ -1,2 +1,7 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1>ImageGram</h1>
+<% if user_signed_in? %>
+    <h3>Bienvenido! <%= current_user.email %> </h3>
+<% else %>
+    <p> por favor inicia sesión para ver imagenes </p>
+<% end %>
+

@@ -1,3 +1,33 @@
 // Place all the styles related to the Images controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$white_color: #fff;
+$blue_color: #3396d2;
+
+.ig-header-menu {
+    height: 70px;
+    background: $blue_color;
+    padding: 20px;
+    margin-bottom: 40px;
+
+    .ig-item-menu {
+        font-weight: bold;
+        color:$white_color;
+        width: 100px;
+        text-align: center;
+    }
+}
+
+.ig-alert{
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    width: 300px; 
+
+    .alert-notice {
+        @extend .alert-success;
+    }
+    .alert-alert {
+        @extend .alert-danger;
+    }
+}
