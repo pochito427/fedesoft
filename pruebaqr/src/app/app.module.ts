@@ -7,6 +7,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner'
 
 import { MyApp } from './app.component';
 import { GuardadosPage, HomePage, MapaPage, TabsPage } from '../pages/index.paginas';
+import { HistorialService } from '../providers/historial/historial';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { GuardadosPage, HomePage, MapaPage, TabsPage } from '../pages/index.pagi
     StatusBar,
     SplashScreen,
     BarcodeScanner,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HistorialService,
+    InAppBrowser,
   ]
 })
 export class AppModule {}
