@@ -9,6 +9,7 @@ import { MyApp } from './app.component';
 import { GuardadosPage, HomePage, MapaPage, TabsPage } from '../pages/index.paginas';
 import { HistorialService } from '../providers/historial/historial';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,10 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCAvyld_XtnpKjmjatu4ylMI3bjnbIs2q0'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
