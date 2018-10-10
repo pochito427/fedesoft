@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
+import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
+import { CargaArchivoProvider } from "../../providers/carga-archivo/carga-archivo";
 /**
  * Generated class for the SubirPage page.
  *
@@ -21,7 +22,7 @@ export class SubirPage {
   imagen64: string;
 
 
-  constructor(private viewCtrl: ViewController, private camera: Camera) {
+  constructor(private viewCtrl: ViewController, private camera: Camera, private imagePicker: ImagePicker, public _cap: CargaArchivoProvider) {
   }
 
   cerrar_modal(){
@@ -45,11 +46,36 @@ export class SubirPage {
   }
 
   seleccionar_foto(){
-    console.log("seleccionar foto");
+    
+    let opciones:ImagePickerOptions = {
+      quality: 70,
+      outputType: 1,
+      maximumImagesCount: 1
+    }
+
+    this.imagePicker.getPictures(opciones).then((results) => {
+      
+            for (var i = 0; i < results.length; i++) {
+                this.imagenPreview = 'data:image/jpeg;base64,' + results[i];
+                this.imagen64 = results[i];
+            }
+      
+          }, (err) => {
+      
+            console.log( "ERROR en selector", JSON.stringify(err) );
+      
+          });
+      
   }
 
   crear_post(){
-    console.log("crear post");
+    let archivo = {
+      img: this.imagen64,
+      titulo: this.titulo
+    }
+    this._cap.cargar_imagen_firebase(archivo)
+      .then(()=>this.cerrar_modal() )
+
   }
 
 

@@ -4,6 +4,7 @@ import { ModalController } from 'ionic-angular';
 import { SubirPage } from "../subir/subir";
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
+import { CargaArchivoProvider } from "../../providers/carga-archivo/carga-archivo";
 
 
 
@@ -16,9 +17,8 @@ export class HomePage {
   hayMas:boolean = true;
   posts: Observable<any[]>;
 
- constructor(private modalCtrl: ModalController
-             , afDB: AngularFireDatabase) {
-     this.posts = afDB.list('post').valueChanges();
+ constructor(private modalCtrl: ModalController, private _cap: CargaArchivoProvider) {
+     
  }
 
 
